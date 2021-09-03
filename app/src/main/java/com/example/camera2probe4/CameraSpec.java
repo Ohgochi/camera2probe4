@@ -24,16 +24,9 @@ import static com.example.camera2probe4.CameraSpecsComment.getControlAwbModeComm
 import static com.example.camera2probe4.CameraSpecsComment.getControlAfModeComment;
 import static com.example.camera2probe4.CameraSpecsComment.getControlAeModeComment;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public class CameraSpec {
