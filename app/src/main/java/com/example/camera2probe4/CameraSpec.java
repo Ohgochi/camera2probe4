@@ -24,16 +24,22 @@ import static com.example.camera2probe4.CameraSpecsComment.getControlAwbModeComm
 import static com.example.camera2probe4.CameraSpecsComment.getControlAfModeComment;
 import static com.example.camera2probe4.CameraSpecsComment.getControlAeModeComment;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class CameraSpec {
     CameraCharacteristics characteristics = null;
     android.hardware.camera2.CameraManager manager;
     String[] cameraIds = null;
-
     List<CameraSpecResult> specs = new ArrayList<>();
 
     public static final int NONE = -1;
@@ -99,10 +105,8 @@ public class CameraSpec {
         List<Integer> capabilitiesList = (List<Integer>) Arrays.stream(capabilities).boxed().collect(Collectors.toList());
         specs.add(new CameraSpecResult(KEY_TITLE, "Request Available Capabilities", NONE));
         getRequestAvailableCapabilitiesComment().forEach( p -> {
-            if (capabilitiesList.contains(p.first) )
-                specs.add(new CameraSpecResult(p.second, "", CHECK));
-            else
-                specs.add(new CameraSpecResult(p.second, "", CROSS));
+            int checkmark = capabilitiesList.contains(p.first) ? CHECK : CROSS;
+            specs.add(new CameraSpecResult(p.second, "", checkmark));
         });
     }
 
@@ -111,10 +115,8 @@ public class CameraSpec {
         List<Integer> capabilitiesList = (List<Integer>) Arrays.stream(capabilities).boxed().collect(Collectors.toList());
         specs.add(new CameraSpecResult(KEY_TITLE, "Auto White Balance Capabilities", NONE));
         getControlAwbModeComment().forEach( p -> {
-            if (capabilitiesList.contains(p.first) )
-                specs.add(new CameraSpecResult(p.second, "", CHECK));
-            else
-                specs.add(new CameraSpecResult(p.second, "", CROSS));
+            int checkmark = capabilitiesList.contains(p.first) ? CHECK : CROSS;
+            specs.add(new CameraSpecResult(p.second, "", checkmark));
         });
     }
 
@@ -123,10 +125,8 @@ public class CameraSpec {
         List<Integer> capabilitiesList = (List<Integer>) Arrays.stream(capabilities).boxed().collect(Collectors.toList());
         specs.add(new CameraSpecResult(KEY_TITLE, "Auto Focus Capabilities", NONE));
         getControlAfModeComment().forEach( p -> {
-            if (capabilitiesList.contains(p.first) )
-                specs.add(new CameraSpecResult(p.second, "", CHECK));
-            else
-                specs.add(new CameraSpecResult(p.second, "", CROSS));
+            int checkmark = capabilitiesList.contains(p.first) ? CHECK : CROSS;
+            specs.add(new CameraSpecResult(p.second, "", checkmark));
         });
     }
 
@@ -135,10 +135,8 @@ public class CameraSpec {
         List<Integer> capabilitiesList = (List<Integer>) Arrays.stream(capabilities).boxed().collect(Collectors.toList());
         specs.add(new CameraSpecResult(KEY_TITLE, "Auto Exposure Capabilities", NONE));
         getControlAeModeComment().forEach( p -> {
-            if (capabilitiesList.contains(p.first) )
-                specs.add(new CameraSpecResult(p.second, "", CHECK));
-            else
-                specs.add(new CameraSpecResult(p.second, "", CROSS));
+            int checkmark = capabilitiesList.contains(p.first) ? CHECK : CROSS;
+            specs.add(new CameraSpecResult(p.second, "", checkmark));
         });
     }
 }

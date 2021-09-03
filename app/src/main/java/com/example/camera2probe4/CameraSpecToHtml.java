@@ -38,7 +38,6 @@ public class CameraSpecToHtml {
         return unencodedHtml;
     }
 
-    //     public void setUnencodedHtml(List<Triple<String, String, Integer>> specs) {
     public void setUnencodedHtml(List<CameraSpecResult> specs) {
         unencodedHtml = HTML_OPEN_HEAD + thisContext.getString(R.string.app_name) + HTML_OPEN_BODY;
         specs.forEach( p -> {
